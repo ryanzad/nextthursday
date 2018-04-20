@@ -1,0 +1,14 @@
+
+	//////////////////
+	// PLAYER PREFS //
+	//////////////////
+		
+	/*
+		This is used to
+		keep track of all
+		the Player Prefs in
+		the game.
+	*/
+	
+	
+PREF TITLE --- DATA TYPE --- EXAMPLE VALUES --- DESCRIPTION
