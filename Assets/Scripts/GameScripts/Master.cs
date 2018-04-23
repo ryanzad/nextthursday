@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateHandler : MonoBehaviour {
+public class Master : MonoBehaviour {
 
-    public enum GameState { START, PLAY, PAUSE}
-
-    public GameState gameState = GameState.START;
-
-
-    /*
 	// Use this for initialization
 	void Start () {
 		
@@ -19,5 +13,4 @@ public class StateHandler : MonoBehaviour {
 	void Update () {
 		
 	}
-    */
 }

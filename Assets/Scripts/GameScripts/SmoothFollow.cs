@@ -12,8 +12,7 @@ public class SmoothFollow : MonoBehaviour
     {
         if (isSmooth) Debug.LogWarning("do the smooth camera follow");
     }
-
-
+    
     void Update()
     {
         Vector3 newPos;

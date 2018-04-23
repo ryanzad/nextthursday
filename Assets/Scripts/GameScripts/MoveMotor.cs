@@ -71,6 +71,10 @@ public class MoveMotor : MonoBehaviour {
 
 
     void Update () {
+
+
+
+
         if (active)
         {
 

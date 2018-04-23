@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameInit : MonoBehaviour {
-    
+
+    public MasterReferences master;
+
     public List<GameObject> levels = new List<GameObject>();
 
     [Header("REFERENCES")]
@@ -24,19 +26,9 @@ public class GameInit : MonoBehaviour {
     {
         GameObject introSelectionObj = Instantiate(IntroSelectionPrefab);
         SelectionHandler selectionHandler = introSelectionObj.GetComponent<SelectionHandler>();
-        selectionHandler.Run(level);
-
-
-        /*switch (levelToLoad)
-         * 
-        {
-            case 0:
-                selectionHandler.Run(SelectionHandler.SelectionMode.INTRO); //the first level will have no selection
-                break;
-            default:
-                selectionHandler.Run(SelectionHandler.SelectionMode.BINARY); //every other level will have two choices
-                break;
-        }*/
+        selectionHandler.modifiers = master.modifiers;
+        selectionHandler.gameInit = this;
+        selectionHandler.Init(level);
     }
 
     public void StartGame () //call this to start the game
@@ -49,7 +41,7 @@ public class GameInit : MonoBehaviour {
 
     void LoadLevel(int level)
     {
-        Instantiate(levels[level]);
+     // use this:   Instantiate(levels[level]);
 
     }
 
