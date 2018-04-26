@@ -52,7 +52,12 @@ public class SelectionHandler : MonoBehaviour {
     {
         for (int i = 0; i < GetChoiceCount(selection); i++)
         {
-            selection.mods.Add(GetMod());
+            Modifiers.Modifier getMod = GetMod();
+            while (selection.mods.Contains(getMod)) //ensures the same mod won't show up for multiple choices
+            {
+                getMod = GetMod();
+            }
+            selection.mods.Add(getMod);
         }
     }
 
@@ -125,7 +130,7 @@ public class SelectionHandler : MonoBehaviour {
 
     Selection GetSelection(int level)
     {
-        foreach (Selection selection in Selections)
+        foreach (Selection selection in Selections) 
         {
             if (selection.level == level) return selection;
         }

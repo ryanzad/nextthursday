@@ -59,7 +59,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1162626970524140
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,6 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4534850655613502}
   - component: {fileID: 114899049155842042}
+  - component: {fileID: 114896852664219860}
   m_Layer: 0
   m_Name: IntroSelection
   m_TagString: Untagged
@@ -226,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1657105771248182
 GameObject:
   m_ObjectHideFlags: 1
@@ -314,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989834468834512}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.33, y: 0, z: -2.09}
+  m_LocalPosition: {x: -0.33, y: 0.35, z: -2.09}
   m_LocalScale: {x: 0.22515662, y: 1.4286188, z: 1.4286188}
   m_Children:
   - {fileID: 4152982807285348}
@@ -480,7 +481,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373580164106360}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.351, y: 0, z: -2.0900004}
+  m_LocalPosition: {x: 0.351, y: 0.35, z: -2.09}
   m_LocalScale: {x: 0.22515675, y: 1.4286202, z: 1.4286202}
   m_Children:
   - {fileID: 4320272300662450}
@@ -522,7 +523,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069637875763420}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.003, y: 0, z: -2.09}
+  m_LocalPosition: {x: -0.003, y: 0.35, z: -2.09}
   m_LocalScale: {x: 0.22515662, y: 1.4286188, z: 1.4286188}
   m_Children:
   - {fileID: 4322759071824086}
@@ -1069,6 +1070,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionDetection: {fileID: 114961690785188776}
   textMesh: {fileID: 102680806614520052}
+--- !u!114 &114896852664219860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162626970524140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9187c91115c1ddd4187af868313f2733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objs:
+  - {fileID: 1656767413968032}
+  - {fileID: 1084677364594270}
 --- !u!114 &114899049155842042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1083,7 +1098,7 @@ MonoBehaviour:
   Selections:
   - level: 0
     intro_msg: Test
-    selectionMode: 1
+    selectionMode: 2
     mods: 
   modDisplays:
   - mod: 0

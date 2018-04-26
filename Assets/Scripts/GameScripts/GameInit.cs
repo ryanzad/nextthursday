@@ -8,21 +8,36 @@ public class GameInit : MonoBehaviour {
 
     public List<GameObject> levels = new List<GameObject>();
 
+    int level = 0;
+
+
+
     [Header("REFERENCES")]
-
+    
     public GameObject IntroSelectionPrefab;
+    public GameObject PlayerPrefab;
 
 
-    void Start () {
-        int level = PlayerPrefs.HasKey("LevelLoad") ? PlayerPrefs.GetInt("LevelLoad") : 0;
+    [Header("INTERNAL REFERENCES")]
 
-        LoadSelection(level);
+    GameObject player;
+    MoveMotor playerMotor;
 
 
 
+
+
+    void Start ()
+    {
+        InitLevel();
+    }
+
+    public void InitLevel () {
+        level = PlayerPrefs.HasKey("LevelLoad") ? PlayerPrefs.GetInt("LevelLoad") : 0;
+        LoadSelection();
 	}
 
-    void LoadSelection (int level)
+    void LoadSelection ()
     {
         GameObject introSelectionObj = Instantiate(IntroSelectionPrefab);
         SelectionHandler selectionHandler = introSelectionObj.GetComponent<SelectionHandler>();
@@ -33,22 +48,69 @@ public class GameInit : MonoBehaviour {
 
     public void StartGame () //call this to start the game
     {
-        LoadLevel(0);
+        LevelData levelData = LoadLevel();
+        SpawnGame(levelData);
 
-        // SpawnPlayer();
+        SetCameraTarget(player.transform);
+        playerMotor.On();
     }
 
-
-    void LoadLevel(int level)
+    LevelData LoadLevel()
     {
-     // use this:   Instantiate(levels[level]);
-
+        GameObject levelObj = Instantiate(levels[level]);
+        return levelObj.GetComponent<LevelData>();
     }
 
 
+    void SpawnGame(LevelData levelData)
+    {
 
+        SpawnPlayer(levelData);
+        SpawnBuildings(levelData);
+        SpawnSceneObjects(levelData);
+        
+    }
 
+    void SpawnPlayer (LevelData levelData)
+    {
+        player = Instantiate(PlayerPrefab, levelData.playerSpawn);
+        playerMotor = player.GetComponent<MoveMotor>();
+    }
 
-	
+    void SpawnBuildings(LevelData levelData)
+    {
+        foreach (LevelData.Building building in levelData.buildings)
+        {
+            foreach (Transform child in levelData.transform)
+            {
+                if (child.name.Contains(building.keyTerm))
+                {
+                    Instantiate(building.buildingPrefab, child);
+                }
+            }
+
+        }
+    }
     
+    void SpawnSceneObjects(LevelData levelData)
+    {
+        foreach (LevelData.SceneObjects sceneObject in levelData.sceneObjects)
+        {
+            foreach (Transform child in levelData.transform)
+            {
+                if (child.name.Contains(sceneObject.keyTerm))
+                {
+                    Instantiate(sceneObject.sceneObjectPrefab, child);
+                }
+            }
+        }
+    }
+
+
+    void SetCameraTarget (Transform target)
+    {
+        master.camFollow.SetTarget(target);
+    }
+    
+
 }
