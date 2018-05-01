@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveMotor : MonoBehaviour {
 	//
     [Header("REFERENCES")]
-    public Rigidbody rigid;
+    public Rigidbody2D rigid;
 
     [Header("CONTROLS")]
 
@@ -24,6 +24,9 @@ public class MoveMotor : MonoBehaviour {
     [Tooltip("x = min, y = max, it'll select a random speed between those two")]
     public Vector2 turnSpeedRange;
 
+    [Tooltip("how long it takes to fire up the engines after it's off")]
+    public float turnOnDelay;
+
     Vector3 mouseScreen, mouse;
     float turnSpeed;
 
@@ -36,13 +39,34 @@ public class MoveMotor : MonoBehaviour {
     int hitState = 0;
     
 
+
+
+    public void On ()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TurnOn());
+    }
+
+    IEnumerator TurnOn ()
+    {
+        yield return new WaitForSeconds(turnOnDelay);
+        active = true;
+    }
+
+
+
+
+
+
+
+
     private void Start()
     {
         turnSpeed = Random.Range(turnSpeedRange.x, turnSpeedRange.y);
     }
 
 
-
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (!active && collision.gameObject.name.Contains("player")) {
@@ -65,12 +89,13 @@ public class MoveMotor : MonoBehaviour {
         }
     }
 
-
+    */
 
 
 
 
     void Update () {
+        
         if (active)
         {
 
@@ -84,7 +109,7 @@ public class MoveMotor : MonoBehaviour {
             {
                 if (GetMouseDistance() > mouseDistanceThreshold)
                 {
-                    rigid.AddForce(transform.forward * forwardInitSpeed * (GetMouseDistance() + mouseDistanceSpeed));
+                    rigid.AddForce(transform.right * forwardInitSpeed * (GetMouseDistance() + mouseDistanceSpeed));
 
                 }
                 else
@@ -133,7 +158,7 @@ public class MoveMotor : MonoBehaviour {
     IEnumerator Explode ()
     {
        // transform.localScale *= 4f;
-        GetComponent<BoxCollider>().size *= 4f;
+        GetComponent<BoxCollider2D>().size *= 4f;
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
@@ -142,7 +167,7 @@ public class MoveMotor : MonoBehaviour {
     void MouseRotation()
     {
             transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.Euler(Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * -Mathf.Rad2Deg, 90, 90),
+                Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg),
                 turnSpeed * Time.deltaTime);
         /*
         transform.rotation =

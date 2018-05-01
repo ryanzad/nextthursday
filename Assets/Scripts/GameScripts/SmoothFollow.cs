@@ -6,15 +6,18 @@ public class SmoothFollow : MonoBehaviour
 {
     public Transform target;
     public bool useX, useY, useZ;
-    public bool isSmooth = true;
 
-    private void Start()
+    public void SetTarget (Transform getTarget)
     {
-        if (isSmooth) Debug.LogWarning("do the smooth camera follow");
+        target = getTarget;
+    }
+    
+    void Update()
+    {
+        if (target) FollowTarget();
     }
 
-
-    void Update()
+    void FollowTarget()
     {
         Vector3 newPos;
         newPos.x = useX ? target.position.x : transform.position.x;

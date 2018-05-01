@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/MapGamePlayTest.unity
+=======
+- path: Assets/Scenes/MainScene.unity
+>>>>>>> master
   isLoaded: 1
   isActive: 1
