@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 1610001635077068}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.3450017, y: 1, z: 1}
+  m_LocalScale: {x: 11.48633, y: 1.8102957, z: 1.8102957}
   m_Children: []
   m_Father: {fileID: 4534850655613502}
   m_RootOrder: 1
@@ -332,7 +332,7 @@ Transform:
   m_GameObject: {fileID: 1656767413968032}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.3450017, y: 1, z: 1}
+  m_LocalScale: {x: 11.48633, y: 1.8102957, z: 1.8102957}
   m_Children:
   - {fileID: 4109623277324266}
   - {fileID: 4744920524296926}
@@ -345,13 +345,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1916917587571344}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1528273, y: 0.15282734, z: 0.1528273}
   m_Children: []
   m_Father: {fileID: 4109623277324266}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -270, y: -90, z: 90}
 --- !u!4 &4216483138109678
 Transform:
   m_ObjectHideFlags: 1
@@ -373,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 1084677364594270}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.345, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 11.486326, y: 1.8102965, z: 1.8102965}
   m_Children:
   - {fileID: 4994487550277244}
   m_Father: {fileID: 4534850655613502}
@@ -385,26 +385,26 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514260662355976}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1528273, y: 0.15282734, z: 0.1528273}
   m_Children: []
   m_Father: {fileID: 4744920524296926}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -270, y: -90, z: 90}
 --- !u!4 &4322759071824086
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032336356874494}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1528273, y: 0.15282734, z: 0.1528273}
   m_Children: []
   m_Father: {fileID: 4994487550277244}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -270, y: -90, z: 90}
 --- !u!4 &4534850655613502
 Transform:
   m_ObjectHideFlags: 1
@@ -511,7 +511,7 @@ Transform:
   m_GameObject: {fileID: 1964497317864520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.13950907, y: 0.13950904, z: 0.13950904}
+  m_LocalScale: {x: 0.25255254, y: 0.2525526, z: 0.2525526}
   m_Children: []
   m_Father: {fileID: 4534850655613502}
   m_RootOrder: 0
@@ -1017,6 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionDetection: {fileID: 114520849660083070}
   textMesh: {fileID: 102232277207586488}
+  iconRenderer: {fileID: 23682446069262060}
 --- !u!114 &114520849660083070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1070,6 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionDetection: {fileID: 114961690785188776}
   textMesh: {fileID: 102680806614520052}
+  iconRenderer: {fileID: 23506242460062692}
 --- !u!114 &114896852664219860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1096,19 +1098,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selections:
-  - level: 0
-    intro_msg: Test
+  - level: 1
+    intro_msg: The universe was created last thursday
+    selectionMode: 2
+    mods: 
+  - level: 2
+    intro_msg: Test2
+    selectionMode: 2
+    mods: 
+  - level: 3
+    intro_msg: Test3
+    selectionMode: 2
+    mods: 
+  - level: 4
+    intro_msg: Test4
+    selectionMode: 2
+    mods: 
+  - level: 5
+    intro_msg: Test5
     selectionMode: 2
     mods: 
   modDisplays:
   - mod: 0
     text: Angry
+    icon: {fileID: 2800000, guid: b61fb13c7831ea14a9ab455f07985d7c, type: 3}
   - mod: 1
     text: Without a sun
+    icon: {fileID: 2800000, guid: 959a906e5df02644696e58b381ae363b, type: 3}
   - mod: 2
     text: Bouncy
+    icon: {fileID: 2800000, guid: 5b73ef43037ac7d47b195886eda63047, type: 3}
   - mod: 3
     text: Slippery
+    icon: {fileID: 2800000, guid: 0945e7d35beff9a47900f5d1216c37a9, type: 3}
+  - mod: 4
+    text: Placeholder 5
+    icon: {fileID: 2800000, guid: 8c276b29fd50c94478f2b57db914f6af, type: 3}
+  - mod: 5
+    text: Placeholder 6
+    icon: {fileID: 2800000, guid: f0f8a7faf3961d6439defd32da32a56d, type: 3}
+  - mod: 6
+    text: Placeholder 7
+    icon: {fileID: 2800000, guid: 5f6ba4016ef7df9489093e639002ba6a, type: 3}
+  - mod: 7
+    text: Placeholder 8
+    icon: {fileID: 2800000, guid: 1bd1d9c271011e243bb48cf39df87ef8, type: 3}
+  - mod: 8
+    text: Placeholder 9
+    icon: {fileID: 2800000, guid: d976aef2ad8b44b4095cc78e70ffe3f3, type: 3}
+  - mod: 9
+    text: Placeholder 10
+    icon: {fileID: 2800000, guid: fe5802029b0dbda4ca19bab960dc9f86, type: 3}
+  - mod: 10
+    text: Placeholder 11
+    icon: {fileID: 2800000, guid: c5e24399ab1871a40b4a7ccf99f764b0, type: 3}
+  - mod: 11
+    text: Placeholder 12
+    icon: {fileID: 2800000, guid: eb6851c9a1dfb9140878d3695199b12d, type: 3}
+  - mod: 12
+    text: Placeholder 13
+    icon: {fileID: 2800000, guid: 7878dcd257bd6c040b73b8a36c2e73be, type: 3}
+  - mod: 13
+    text: Placeholder 14
+    icon: {fileID: 2800000, guid: 4e77eb38515c2a7459ea808e1e76f2eb, type: 3}
+  - mod: 14
+    text: Placeholder 15
+    icon: {fileID: 2800000, guid: 9e1434ac0dbca9542a5ed8659bac97ed, type: 3}
   textDisplay: {fileID: 102211317923486484}
   modifiers: {fileID: 0}
   gameInit: {fileID: 0}
@@ -1138,3 +1193,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionDetection: {fileID: 114031992739760300}
   textMesh: {fileID: 102747292308493790}
+  iconRenderer: {fileID: 23373446172032230}

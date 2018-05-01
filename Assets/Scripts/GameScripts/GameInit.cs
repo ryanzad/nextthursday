@@ -33,9 +33,15 @@ public class GameInit : MonoBehaviour {
     }
 
     public void InitLevel () {
-        level = PlayerPrefs.HasKey("LevelLoad") ? PlayerPrefs.GetInt("LevelLoad") : 0;
+        level = master.saveHandler.GetLevel();
+        LoadMods();
         LoadSelection();
 	}
+
+    void LoadMods ()
+    {
+        master.saveHandler.LoadMods();
+    }
 
     void LoadSelection ()
     {
@@ -53,11 +59,12 @@ public class GameInit : MonoBehaviour {
 
         SetCameraTarget(player.transform);
         playerMotor.On();
+        master.countdown.StartCount();
     }
 
     LevelData LoadLevel()
     {
-        GameObject levelObj = Instantiate(levels[level]);
+        GameObject levelObj = Instantiate(levels[level - 1]);
         return levelObj.GetComponent<LevelData>();
     }
 

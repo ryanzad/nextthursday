@@ -25,6 +25,7 @@ public class SelectionHandler : MonoBehaviour {
     {
         public Modifiers.Modifier mod;
         public string text;
+        public Texture icon;
     }
 
     public List<ModifierDisplay> modDisplays;
@@ -63,6 +64,7 @@ public class SelectionHandler : MonoBehaviour {
 
     void DisplayChoices (Selection selection)
     {
+        Debug.Log(">>> " + selection.selectionMode.ToString());
         SelectionSet selectionSet = GetSelectionSet(selection);
 
         selectionSet.gameObject.SetActive(true);
@@ -107,7 +109,11 @@ public class SelectionHandler : MonoBehaviour {
     {
         foreach (Transform child in transform)
         {
-            if (child.name.Contains(selection.selectionMode.ToString())) return child.GetComponent<SelectionSet>();
+            Debug.Log(selection.selectionMode.ToString() + "   ||||| " + child.name);
+            if (child.name.Contains(selection.selectionMode.ToString()))
+            {
+                return child.GetComponent<SelectionSet>();
+            }
         }
         return new SelectionSet();
     }
