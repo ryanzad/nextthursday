@@ -95,7 +95,7 @@ public class GameInit : MonoBehaviour {
 
         
         int maxAllies = master.saveHandler.GetAllies();
-        int maxNonCon = levelData.maxNPC - maxAllies;
+        int maxNonCon = master.controls.NPCCount - maxAllies;
 
         Debug.Log(maxNonCon + " max");
 

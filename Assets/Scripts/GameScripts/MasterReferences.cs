@@ -11,6 +11,7 @@ public class MasterReferences : MonoBehaviour {
     public Countdown countdown;
     public SaveHandler saveHandler;
     public GameScorer scorer;
+    public GameControls controls;
     
 
 }
