@@ -14,7 +14,6 @@ public class Countdown : MonoBehaviour {
 
     bool allow = false;
     
-    public float weekLength;
     float weekCount;
 
     int previousDayCount = -1;
@@ -30,7 +29,7 @@ public class Countdown : MonoBehaviour {
         if (allow)
         {
 
-            if (weekCount >= weekLength)
+            if (weekCount >= master.controls.weekLength)
             {
                 allow = false;
                 End();
@@ -38,9 +37,9 @@ public class Countdown : MonoBehaviour {
             else
             {
                 weekCount += Time.deltaTime;
-                DisplayProgress(weekCount / weekLength);
+                DisplayProgress(weekCount / master.controls.weekLength);
 
-                int dayCount = Mathf.FloorToInt(weekCount / weekLength * 7);
+                int dayCount = Mathf.FloorToInt(weekCount / master.controls.weekLength * 7);
                 if (dayCount != previousDayCount)
                 {
                     previousDayCount = dayCount;

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - Ally
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,9 +16,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Goodies
+  - Baddies
+  - Bullet
   - 
   - 
   - 

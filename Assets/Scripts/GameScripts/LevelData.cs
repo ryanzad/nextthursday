@@ -31,12 +31,13 @@ public class LevelData : MonoBehaviour {
 
     [Header("OBJECT REFERENCES")]
     public Transform playerSpawn;
-    public List<Transform> enemySpawn;
+    public string enemySpawnKey;
     public List<NPCSpawn> npcSpawn = new List<NPCSpawn>();
     public List<Building> buildings = new List<Building>();
     public List<SceneObjects> sceneObjects = new List<SceneObjects>();
 
 
-   // [Header("LEVEL CONTROLS")]
+    [Header("LEVEL CONTROLS")]
+    public AnimationCurve difficultyCurve;
 
 }

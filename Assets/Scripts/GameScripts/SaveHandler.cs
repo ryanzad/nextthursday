@@ -10,9 +10,13 @@ public class SaveHandler : MonoBehaviour {
     public void NextScene ()
     {
 
+
+
         PlayerPrefs.SetInt("LevelLoad", !PlayerPrefs.HasKey("LevelLoad") ? 2 : PlayerPrefs.GetInt("LevelLoad") + 1); //increases level number
         PlayerPrefs.SetInt("Allies", master.scorer.GetAllyCount()); //saves the number of allies for the next round
 
+        int roundScore = master.scorer.GetAllyCount() + master.scorer.GetEnemyDeaths();
+        PlayerPrefs.SetInt("GameScore", PlayerPrefs.HasKey("GameScore") ? PlayerPrefs.GetInt("GameScore") + roundScore : roundScore);
 
         int levelToLoad = PlayerPrefs.GetInt("LevelLoad");
         if (levelToLoad <= 5)
@@ -22,7 +26,6 @@ public class SaveHandler : MonoBehaviour {
         } else
         {
             Application.LoadLevel(endScene);
-            PlayerPrefs.DeleteAll();
         }
     }
 

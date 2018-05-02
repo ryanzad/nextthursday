@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveMotor : MonoBehaviour {
-	//
+
+    public MasterReferences master;
+
     [Header("REFERENCES")]
     public Rigidbody2D rigid;
 
@@ -65,34 +67,7 @@ public class MoveMotor : MonoBehaviour {
         turnSpeed = Random.Range(turnSpeedRange.x, turnSpeedRange.y);
     }
 
-
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!active && collision.gameObject.name.Contains("player")) {
-            switch (hitState) {
-                case 0:
-                    hitState = 1;
-                    transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
-                   // transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-                    break;
-                case 1:
-                    hitState = 2;
-                    transform.GetChild(0).GetComponent<Renderer>().material.color = Color.blue;
-                    break;
-                case 2:
-                    hitState = 3;
-                    transform.GetChild(0).GetComponent<Renderer>().material.color = Color.black;
-                    active = true;
-                    break;
-            }
-        }
-    }
-
-    */
-
-
-
+    
 
     void Update () {
         
@@ -118,14 +93,14 @@ public class MoveMotor : MonoBehaviour {
                 }
             }
 
-
+            /*
             if (Input.GetMouseButtonDown(1) && allowDeath)
             {
                 if (Random.Range(1, 10) == 5)
                 {
                     StartCoroutine(Explode());
                 }
-            }
+            }*/
         }
 
         
@@ -155,11 +130,34 @@ public class MoveMotor : MonoBehaviour {
         
     }
 
-    IEnumerator Explode ()
+    public void DieAlly ()
     {
-       // transform.localScale *= 4f;
-        GetComponent<BoxCollider2D>().size *= 4f;
-        yield return new WaitForSeconds(0.1f);
+        if (!allowDeath) return;
+        allowDeath = true;
+
+        master.scorer.KillAlly();
+
+        StartCoroutine(Explode());
+    }
+
+    public void DieNPC ()
+    {
+        if (!allowDeath) return;
+        allowDeath = true;
+        
+        StartCoroutine(Explode());
+    }
+
+    public IEnumerator Explode ()
+    {
+        /* foreach (Transform child in transform)
+         {
+             child.GetComponent<Renderer>().enabled = false;
+         }
+
+         GetComponent<BoxCollider2D>().size *= 4f;
+         yield return new WaitForSeconds(0.1f);*/
+        yield return null;
         Destroy(gameObject);
     }
 

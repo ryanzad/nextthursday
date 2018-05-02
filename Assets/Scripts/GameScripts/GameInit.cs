@@ -72,6 +72,7 @@ public class GameInit : MonoBehaviour {
     void SpawnGame(LevelData levelData)
     {
 
+        SetupEnemySpawn(levelData);
         SpawnPlayer(levelData);
         SpawnNPC(levelData);
         SpawnBuildings(levelData);
@@ -90,9 +91,6 @@ public class GameInit : MonoBehaviour {
 
     void SpawnNPC (LevelData levelData)
     {
-
-       
-
         
         int maxAllies = master.saveHandler.GetAllies();
         int maxNonCon = master.controls.NPCCount - maxAllies;
@@ -130,6 +128,9 @@ public class GameInit : MonoBehaviour {
                             npcHandler.master = master;
                             npcHandler.SetMode(npcSpawn.mode);
 
+                            MoveMotor motor = npc.GetComponent<MoveMotor>();
+                            motor.master = master;
+
                             if (npcMode == NPCHandler.NPCMode.ALLY)
                             {
                                 allyCount++;
@@ -144,9 +145,7 @@ public class GameInit : MonoBehaviour {
                     }
                 }
             }
-
-
-            Debug.Log("answer: " + allyCount + " - " + maxAllies + " ]-----[ " + nonConCount + " " + maxNonCon);
+            
 
         }
 
@@ -198,6 +197,21 @@ public class GameInit : MonoBehaviour {
         }
     }
 
+
+    void SetupEnemySpawn (LevelData levelData)
+    {
+        List<Transform> enemySpawnPoints = new List<Transform>();
+        foreach (Transform child in levelData.transform)
+        {
+            if (child.name.Contains(levelData.enemySpawnKey))
+            {
+                enemySpawnPoints.Add(child);
+            }
+        }
+        master.spawnEnemies.spawnPoints = enemySpawnPoints;
+        master.spawnEnemies.difficulty = levelData.difficultyCurve;
+        master.spawnEnemies.StartSpawn();
+    }
 
     void SetCameraTarget (Transform target)
     {

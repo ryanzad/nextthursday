@@ -12,6 +12,6 @@ public class MasterReferences : MonoBehaviour {
     public SaveHandler saveHandler;
     public GameScorer scorer;
     public GameControls controls;
-    
+    public SpawnEnemies spawnEnemies;
 
 }
