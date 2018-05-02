@@ -12,3 +12,8 @@
 	
 	
 PREF TITLE --- DATA TYPE --- EXAMPLE VALUES --- DESCRIPTION
+
+LevelLoad --- Int --- Null/0, 1, 2, 3, 4 --- The Level to load
+ModList --- String --- 1,3,5 / 14,10 / 2 --- A list of the num values of the mods stored deliminated by ','
+Allies --- Int --- Null/0, 1, 2 ... --- Number of allies the player starts the level off with
+GameScore --- Int --- Null/0, 1, 2 ... --- The current score of the game
