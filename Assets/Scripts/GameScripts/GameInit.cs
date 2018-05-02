@@ -90,33 +90,79 @@ public class GameInit : MonoBehaviour {
 
     void SpawnNPC (LevelData levelData)
     {
-       int maxAllies = 50;
-        Debug.Log("Change this ^");
-      //  int maxAllies = master.saveHandler.GetAllies();
+
+       
+
+        
+        int maxAllies = master.saveHandler.GetAllies();
+        int maxNonCon = levelData.maxNPC - maxAllies;
+
+        Debug.Log(maxNonCon + " max");
+
         int allyCount = 0;
+        int nonConCount = 0;
+
+        while (allyCount < maxAllies || nonConCount < maxNonCon) //keep looping until all allies and noncons are in places
+        {
+            Debug.Log("looping once..");
+            foreach (LevelData.NPCSpawn npcSpawn in levelData.npcSpawn)
+            {
+                foreach (Transform child in levelData.transform)
+                {
+                    if (child.name.Contains(npcSpawn.keyTerm))
+                    {
+                        NPCHandler.NPCMode npcMode = npcSpawn.mode;
+
+                        if (npcMode == NPCHandler.NPCMode.NONCON)
+                        {
+                            Debug.Log("checking: " + nonConCount + " .... " + maxNonCon);
+                        }
+
+                        if (npcMode == NPCHandler.NPCMode.ALLY && allyCount < maxAllies ||
+                            npcMode == NPCHandler.NPCMode.NONCON && nonConCount < maxNonCon)
+                        {
+                            GameObject npc = Instantiate(npcSpawn.NPCPrefab, child);
+
+                            npc.transform.parent = levelData.transform;
+                            npc.name = "NPC [" + npcSpawn.keyTerm.Replace("Spawn", "") + "]";
+
+                            NPCHandler npcHandler = npc.GetComponent<NPCHandler>();
+                            npcHandler.master = master;
+                            npcHandler.SetMode(npcSpawn.mode);
+
+                            if (npcMode == NPCHandler.NPCMode.ALLY)
+                            {
+                                allyCount++;
+                                Debug.Log("add ally111");
+                            }
+                            else if (npcMode == NPCHandler.NPCMode.NONCON)
+                            {
+                                nonConCount++;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+
+            Debug.Log("answer: " + allyCount + " - " + maxAllies + " ]-----[ " + nonConCount + " " + maxNonCon);
+
+        }
+
+
+
         foreach (LevelData.NPCSpawn npcSpawn in levelData.npcSpawn)
         {
             foreach (Transform child in levelData.transform)
             {
                 if (child.name.Contains(npcSpawn.keyTerm))
                 {
-                    NPCHandler.NPCMode npcMode = npcSpawn.mode;
-                    if (npcMode == NPCHandler.NPCMode.ALLY && allyCount < maxAllies 
-                        || npcMode == NPCHandler.NPCMode.NONCON)
-                    {
-                        GameObject npc = Instantiate(npcSpawn.NPCPrefab, child);
-                        NPCHandler npcHandler = npc.GetComponent<NPCHandler>();
-                        npcHandler.SetMode(npcSpawn.mode);
-
-                        if (npcMode == NPCHandler.NPCMode.ALLY)
-                        {
-                            allyCount++;
-                        }
-                    }
+                    Destroy(child.gameObject);
                 }
             }
         }
-    }
+     }
 
     void SpawnBuildings(LevelData levelData)
     {

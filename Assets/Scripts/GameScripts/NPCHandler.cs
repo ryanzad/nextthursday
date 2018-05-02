@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCHandler : MonoBehaviour {
-    
+
+    public MasterReferences master;
+
     public enum NPCMode { NONCON, ALLY };
     NPCMode mode;
 
@@ -44,13 +46,13 @@ public class NPCHandler : MonoBehaviour {
         if (coll.gameObject.tag == "NPC")
         {
             NPCHandler npcHandler = coll.gameObject.GetComponent<NPCHandler>();
-            if (npcHandler.mode == NPCMode.ALLY && isSeenByCamera) //ensures it is visible and an ally
+            if (npcHandler.mode == NPCMode.ALLY && isSeenByCamera && mode != NPCMode.ALLY) //ensures it is visible and hit by an ally, and is not an ally
             {
                 ConvertToAlly();
             }
 
         }
-        else if (coll.gameObject.tag == "Player")
+        else if (coll.gameObject.tag == "Player" && mode != NPCMode.ALLY) //ensures it is hit by player and is not an ally previously
         {
             ConvertToAlly();
         }
@@ -59,7 +61,10 @@ public class NPCHandler : MonoBehaviour {
     void ConvertToAlly()
     {
         mode = NPCMode.ALLY;
+        master.scorer.AddAlly();
         motor.On();
+
+        render.material.color = new Color(0, 1, 0, 0.5f);
     }
 
 

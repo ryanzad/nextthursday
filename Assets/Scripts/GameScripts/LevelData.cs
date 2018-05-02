@@ -37,6 +37,7 @@ public class LevelData : MonoBehaviour {
     public List<SceneObjects> sceneObjects = new List<SceneObjects>();
 
 
-   // [Header("LEVEL CONTROLS")]
+    [Header("LEVEL CONTROLS")]
+    public int maxNPC;
 
 }

@@ -3105,6 +3105,7 @@ MonoBehaviour:
       type: 2}
     keyTerm: building2
   sceneObjects: []
+  maxNPC: 50
 --- !u!212 &212022377492199030
 SpriteRenderer:
   m_ObjectHideFlags: 1

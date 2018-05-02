@@ -10,6 +10,7 @@ public class MasterReferences : MonoBehaviour {
     public ModHolderDisplay modHolderDisplay;
     public Countdown countdown;
     public SaveHandler saveHandler;
+    public GameScorer scorer;
     
 
 }

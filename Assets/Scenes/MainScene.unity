@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 759259404}
   - component: {fileID: 759259403}
   - component: {fileID: 759259406}
+  - component: {fileID: 759259407}
   m_Layer: 0
   m_Name: '[MASTER]'
   m_TagString: Untagged
@@ -491,6 +492,7 @@ MonoBehaviour:
   modHolderDisplay: {fileID: 614698931}
   countdown: {fileID: 759259403}
   saveHandler: {fileID: 759259406}
+  scorer: {fileID: 759259407}
 --- !u!114 &759259406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +506,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   master: {fileID: 759259405}
   endScene: EndScene
+--- !u!114 &759259407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 759259400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d749b196afbd55c4e8b3ccb6fb275088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 759259405}
 --- !u!1 &768738121
 GameObject:
   m_ObjectHideFlags: 0
