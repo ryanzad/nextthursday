@@ -52,7 +52,10 @@ public class SaveHandler : MonoBehaviour {
     public int GetLevel ()
     {
         return PlayerPrefs.HasKey("LevelLoad") ? PlayerPrefs.GetInt("LevelLoad") : 1;
-
     }
-    
+
+    public int GetAllies()
+    {
+        return PlayerPrefs.HasKey("Allies") ? PlayerPrefs.GetInt("Allies") : 0;
+    }
 }

@@ -73,15 +73,49 @@ public class GameInit : MonoBehaviour {
     {
 
         SpawnPlayer(levelData);
+        SpawnNPC(levelData);
         SpawnBuildings(levelData);
         SpawnSceneObjects(levelData);
-        
     }
 
     void SpawnPlayer (LevelData levelData)
     {
         player = Instantiate(PlayerPrefab, levelData.playerSpawn);
         playerMotor = player.GetComponent<MoveMotor>();
+
+        player.transform.parent = levelData.transform;
+
+        Destroy(levelData.playerSpawn.gameObject);
+    }
+
+    void SpawnNPC (LevelData levelData)
+    {
+       int maxAllies = 50;
+        Debug.Log("Change this ^");
+      //  int maxAllies = master.saveHandler.GetAllies();
+        int allyCount = 0;
+        foreach (LevelData.NPCSpawn npcSpawn in levelData.npcSpawn)
+        {
+            foreach (Transform child in levelData.transform)
+            {
+                if (child.name.Contains(npcSpawn.keyTerm))
+                {
+                    NPCHandler.NPCMode npcMode = npcSpawn.mode;
+                    if (npcMode == NPCHandler.NPCMode.ALLY && allyCount < maxAllies 
+                        || npcMode == NPCHandler.NPCMode.NONCON)
+                    {
+                        GameObject npc = Instantiate(npcSpawn.NPCPrefab, child);
+                        NPCHandler npcHandler = npc.GetComponent<NPCHandler>();
+                        npcHandler.SetMode(npcSpawn.mode);
+
+                        if (npcMode == NPCHandler.NPCMode.ALLY)
+                        {
+                            allyCount++;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void SpawnBuildings(LevelData levelData)
@@ -92,11 +126,14 @@ public class GameInit : MonoBehaviour {
             {
                 if (child.name.Contains(building.keyTerm))
                 {
-                    Instantiate(building.buildingPrefab, child);
+                    GameObject buildingObj = Instantiate(building.buildingPrefab, child);
+                    buildingObj.transform.parent = levelData.transform;
+                    Destroy(child.gameObject);
                 }
             }
 
         }
+
     }
     
     void SpawnSceneObjects(LevelData levelData)
@@ -107,7 +144,9 @@ public class GameInit : MonoBehaviour {
             {
                 if (child.name.Contains(sceneObject.keyTerm))
                 {
-                    Instantiate(sceneObject.sceneObjectPrefab, child);
+                    GameObject sceneObj = Instantiate(sceneObject.sceneObjectPrefab, child);
+                    sceneObj.transform.parent = levelData.transform;
+                    Destroy(child.gameObject);
                 }
             }
         }

@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class LevelData : MonoBehaviour {
 
-    public Transform playerSpawn;
-    public List<Transform> enemySpawn;
+    // STRUCTS
+
+    [System.Serializable]
+    public struct NPCSpawn
+    {
+        public GameObject NPCPrefab;
+        public NPCHandler.NPCMode mode;
+        public string keyTerm;
+    }
 
     [System.Serializable]
     public struct Building
@@ -14,9 +21,6 @@ public class LevelData : MonoBehaviour {
         public string keyTerm;
     }
 
-    public List<Building> buildings = new List<Building>();
-
-
     [System.Serializable]
     public struct SceneObjects
     {
@@ -24,6 +28,15 @@ public class LevelData : MonoBehaviour {
         public string keyTerm;
     }
 
+
+    [Header("OBJECT REFERENCES")]
+    public Transform playerSpawn;
+    public List<Transform> enemySpawn;
+    public List<NPCSpawn> npcSpawn = new List<NPCSpawn>();
+    public List<Building> buildings = new List<Building>();
     public List<SceneObjects> sceneObjects = new List<SceneObjects>();
+
+
+   // [Header("LEVEL CONTROLS")]
 
 }
