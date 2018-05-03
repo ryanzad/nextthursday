@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87b9ff0d3dd302418c48e0dedeceda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  master: {fileID: 0}
   rigid: {fileID: 50036670647506426}
   forwardInitSpeed: 9
   mouseDistanceSpeed: 10
@@ -251,3 +252,4 @@ MonoBehaviour:
   turnOnDelay: 0.5
   active: 0
   allowDeath: 0
+  explodeRadius: 2

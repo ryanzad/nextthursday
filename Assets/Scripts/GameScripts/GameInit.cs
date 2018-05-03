@@ -210,6 +210,8 @@ public class GameInit : MonoBehaviour {
         }
         master.spawnEnemies.spawnPoints = enemySpawnPoints;
         master.spawnEnemies.difficulty = levelData.difficultyCurve;
+        master.spawnEnemies.enemyTimeIncrease = levelData.enemyTimeIncrease;
+        master.spawnEnemies.gameTimeEnemyMax = levelData.enemyTimeMax;
         master.spawnEnemies.StartSpawn();
     }
 

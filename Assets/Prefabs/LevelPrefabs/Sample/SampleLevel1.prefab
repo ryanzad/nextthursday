@@ -6083,18 +6083,37 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 0.46615398
-      outSlope: 0.46615398
+      inSlope: 4.096233
+      outSlope: 4.096233
       tangentMode: 0
     - serializedVersion: 2
-      time: 1000
-      value: 700
+      time: 5
+      value: 10
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  enemyTimeIncrease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  enemyTimeMax: 100
 --- !u!212 &212022377492199030
 SpriteRenderer:
   m_ObjectHideFlags: 1

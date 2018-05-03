@@ -36,6 +36,8 @@ public class MoveMotor : MonoBehaviour {
     public bool active = false;
     public bool allowDeath = true;
 
+    public float explodeRadius;
+    //1 = normal size, 2 = 2x size
 
 
     int hitState = 0;
@@ -134,6 +136,7 @@ public class MoveMotor : MonoBehaviour {
     {
         if (!allowDeath) return;
         allowDeath = true;
+        tag = "Dead";
 
         master.scorer.KillAlly();
 
@@ -144,21 +147,21 @@ public class MoveMotor : MonoBehaviour {
     {
         if (!allowDeath) return;
         allowDeath = true;
-        
+        tag = "Dead";
+
         StartCoroutine(Explode());
     }
 
     public IEnumerator Explode ()
     {
-        /* foreach (Transform child in transform)
+         foreach (Transform child in transform)
          {
              child.GetComponent<Renderer>().enabled = false;
          }
 
-         GetComponent<BoxCollider2D>().size *= 4f;
-         yield return new WaitForSeconds(0.1f);*/
-        yield return null;
-        Destroy(gameObject);
+         GetComponent<BoxCollider2D>().size *= explodeRadius;
+         yield return new WaitForSeconds(0.1f);
+         Destroy(gameObject);
     }
 
 

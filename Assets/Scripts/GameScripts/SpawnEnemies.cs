@@ -8,12 +8,19 @@ public class SpawnEnemies : MonoBehaviour {
 
     public GameObject EnemyPrefab;
 
-    public float spawnInterval;
+    public float spawnInterval; //spawn = spawn based on enemy count
     float spawnTimeCounter;
+
+    public float gameTimeSpawnInterval; //gametime spawn = spawn over time
+    float gameTimeSpawnCounter;
+    float gameTime;
+
 
 
     [HideInInspector] public List<Transform> spawnPoints;
     [HideInInspector] public AnimationCurve difficulty;
+    [HideInInspector] public AnimationCurve enemyTimeIncrease;
+    [HideInInspector] public float gameTimeEnemyMax;
 
     int spawnCount;
     
@@ -34,15 +41,8 @@ public class SpawnEnemies : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Spawn();
-        }
-
         if (allow)
         {
-
-
             if (spawnCount > 0)
             {
                 spawnTimeCounter += Time.deltaTime;
@@ -56,9 +56,35 @@ public class SpawnEnemies : MonoBehaviour {
             }
 
 
+            gameTimeSpawnCounter += Time.deltaTime;
+            gameTime += Time.deltaTime;
+
+            if (gameTimeSpawnCounter > gameTimeSpawnInterval)
+            {
+                GameTimeSpawn(gameTime);
+                gameTimeSpawnCounter = 0;
+            }
+
+
+
+
+
 
         }
     }
+
+    int lastGameTimeSpawn = 0;
+    void GameTimeSpawn (float time)
+    {
+        
+        int spawnTotal = Mathf.RoundToInt(enemyTimeIncrease.Evaluate(time / master.controls.weekLength) * gameTimeEnemyMax);
+        Debug.Log("spawning in " + ((spawnTotal - lastGameTimeSpawn) * gameTimeEnemyMax) + " via game time");
+        spawnCount += spawnTotal - lastGameTimeSpawn;
+        lastGameTimeSpawn = spawnTotal;
+
+    }
+
+
 
 
     int lastSpawn = 0;
@@ -83,8 +109,14 @@ public class SpawnEnemies : MonoBehaviour {
         EnemyHurt enemyHurt = enemyObj.GetComponent<EnemyHurt>();
         enemyHurt.master = master;
 
+        EnemyMotor motor = enemyObj.GetComponent<EnemyMotor>();
+        motor.master = master;
+
 
         enemyID++;
     }
 	
 }
+
+
+//curve.Evaluate(time * maxTime)

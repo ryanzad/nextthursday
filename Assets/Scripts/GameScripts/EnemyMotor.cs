@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMotor : MonoBehaviour {
 
+    [HideInInspector] public MasterReferences master;
+
     [Header("REFERENCES")]
     public GameObject ProjectilePrefab;
     public Rigidbody2D rigid;
@@ -48,10 +50,13 @@ public class EnemyMotor : MonoBehaviour {
 
     [Header("Drift")]
     public bool drift;
+    public float driftInstability;
+    public float driftStrength;
 
     [Header("Shoot")]
     public bool shoot;
     public float shootInterval;
+    public float shootDistanceMin, shootDistanceMax;
     bool allowShoot;
     float shootCount = 0;
 
@@ -80,6 +85,7 @@ public class EnemyMotor : MonoBehaviour {
         if (followTarget && foundTarget) FollowTarget(); //if you have found a target, follow it
         if (shoot && foundTarget && allowShoot) Shoot();
         if (checkShoot) CheckShoot();
+        if (drift) Drift();
     }
 
 
@@ -146,7 +152,7 @@ public class EnemyMotor : MonoBehaviour {
                 break;
             case PatrolMode.ROTATE:
                 PatrolRotate();
-                PatrolMove(1);
+                PatrolMove(0.5f);
                 break;
         }
        // patrolMode
@@ -228,8 +234,16 @@ public class EnemyMotor : MonoBehaviour {
 
         float enemyMoveVelocity = Mathf.Abs(rigid.velocity.x) + Mathf.Abs(rigid.velocity.y);
 
+        bool inDist = true;
 
-        allowShoot = !hitNoShoot && enemyMoveVelocity < noShootVelocity;
+        if (foundTarget) //if you've found a target, then shoot if in distance
+        {
+            float dist = Vector3.Distance(transform.position, foundTarget.transform.position);
+            inDist = dist > shootDistanceMin && dist < shootDistanceMax;
+        }
+
+
+        allowShoot = !hitNoShoot && enemyMoveVelocity < noShootVelocity && inDist;
         if (debug)
         {
             Debug.Log(enemyMoveVelocity + " velocity");
@@ -280,8 +294,18 @@ public class EnemyMotor : MonoBehaviour {
         GameObject projectile = Instantiate(ProjectilePrefab, transform);
         projectile.transform.localPosition = new Vector3(1, 0, 0);
         projectile.transform.parent = transform.parent;
+        projectile.GetComponent<ProjectileCollision>().master = master;
     }
 
+
+    void Drift ()
+    {
+        Vector2 randomDriftSeed = new Vector2(randomSeed * 3, randomSeed * 8);
+
+
+        rigid.AddForce(new Vector2(PerlinValue(Time.time + randomDriftSeed.x, driftInstability) * driftStrength,
+            PerlinValue(Time.time + randomDriftSeed.y, driftInstability) * driftStrength  ));
+    }
 
 
 

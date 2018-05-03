@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4751aeac5008ba9438703bc900fb7354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  master: {fileID: 0}
   ProjectilePrefab: {fileID: 1577790326890898, guid: 55cfa3af852b0e843879e721525e31b3,
     type: 2}
   rigid: {fileID: 50382055439447790}
@@ -329,7 +330,7 @@ MonoBehaviour:
   patrolForwardSpeed: 230
   patrolSideDistance: 40
   patrolSideSpeed: 3
-  patrolRotateSpeed: 1.3
+  patrolRotateSpeed: 0.7
   patrolRotateChange: 10
   patrolRotateChangeStrength: 40
   checkCollision: 1
@@ -338,9 +339,13 @@ MonoBehaviour:
   followTarget: 1
   followSpeed: 11
   followDist: 8
-  drift: 0
+  drift: 1
+  driftInstability: 10
+  driftStrength: 200
   shoot: 1
   shootInterval: 1
+  shootDistanceMin: 5
+  shootDistanceMax: 10
   checkShoot: 1
   collisionDistanceNoShoot: 5
   noShootVelocity: 6
@@ -357,4 +362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   master: {fileID: 0}
-  respawnChance: 100
+  respawnChance: 9999999
+  explodeRadius: 1
+  enemyInvincibleAtSpawn: 1

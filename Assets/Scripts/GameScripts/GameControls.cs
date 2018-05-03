@@ -8,4 +8,5 @@ public class GameControls : MonoBehaviour {
 
     public int NPCCount;
     public float weekLength;
+    public bool trampleEnemies;
 }

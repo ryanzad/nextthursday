@@ -13,5 +13,7 @@ public class MasterReferences : MonoBehaviour {
     public GameScorer scorer;
     public GameControls controls;
     public SpawnEnemies spawnEnemies;
+    public Screenshake screenshake;
+
 
 }
