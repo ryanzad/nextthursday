@@ -6083,15 +6083,15 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 4.096233
-      outSlope: 4.096233
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 5
-      value: 10
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+    - serializedVersion: 2
+      time: 5
+      value: 14
+      inSlope: 2.8
+      outSlope: 2.8
+      tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0

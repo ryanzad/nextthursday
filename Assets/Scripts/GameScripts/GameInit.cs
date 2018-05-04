@@ -86,6 +86,8 @@ public class GameInit : MonoBehaviour {
 
         player.transform.parent = levelData.transform;
 
+        master.player = player;
+
         Destroy(levelData.playerSpawn.gameObject);
     }
 
@@ -113,7 +115,7 @@ public class GameInit : MonoBehaviour {
 
                         if (npcMode == NPCHandler.NPCMode.NONCON)
                         {
-                            Debug.Log("checking: " + nonConCount + " .... " + maxNonCon);
+                          //  Debug.Log("checking: " + nonConCount + " .... " + maxNonCon);
                         }
 
                         if (npcMode == NPCHandler.NPCMode.ALLY && allyCount < maxAllies ||
@@ -134,7 +136,7 @@ public class GameInit : MonoBehaviour {
                             if (npcMode == NPCHandler.NPCMode.ALLY)
                             {
                                 allyCount++;
-                                Debug.Log("add ally111");
+                               // Debug.Log("add ally111");
                             }
                             else if (npcMode == NPCHandler.NPCMode.NONCON)
                             {

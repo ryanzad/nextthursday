@@ -16,4 +16,8 @@ public class MasterReferences : MonoBehaviour {
     public Screenshake screenshake;
 
 
+
+    public GameObject player;
+
+
 }

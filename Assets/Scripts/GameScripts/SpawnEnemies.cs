@@ -78,7 +78,7 @@ public class SpawnEnemies : MonoBehaviour {
     {
         
         int spawnTotal = Mathf.RoundToInt(enemyTimeIncrease.Evaluate(time / master.controls.weekLength) * gameTimeEnemyMax);
-        Debug.Log("spawning in " + ((spawnTotal - lastGameTimeSpawn) * gameTimeEnemyMax) + " via game time");
+      //  Debug.Log("spawning in " + ((spawnTotal - lastGameTimeSpawn) * gameTimeEnemyMax) + " via game time");
         spawnCount += spawnTotal - lastGameTimeSpawn;
         lastGameTimeSpawn = spawnTotal;
 
@@ -102,7 +102,7 @@ public class SpawnEnemies : MonoBehaviour {
     void CreateEnemy ()
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-        Debug.Log("spawning enemy : " + enemyID);
+     //   Debug.Log("spawning enemy : " + enemyID);
 
         GameObject enemyObj = Instantiate(EnemyPrefab, spawnPoint);
         enemyObj.transform.localPosition = Vector3.zero;

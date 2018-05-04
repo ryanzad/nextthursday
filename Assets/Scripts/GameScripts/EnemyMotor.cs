@@ -127,6 +127,8 @@ public class EnemyMotor : MonoBehaviour {
             }
             
 
+            /*
+
             if (findTarget.gameObject.tag == "NPC") //target non con ONLY if it is seen on the screen.
             {                                       //that way enemies won't destroy all the non con at the start of the round
                // NPCHandler npcHandler = findTarget.gameObject.GetComponent<NPCHandler>();
@@ -135,7 +137,7 @@ public class EnemyMotor : MonoBehaviour {
                         foundTarget = findTarget;
                  //   }
             }
-
+            */
 
         }
     }

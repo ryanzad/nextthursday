@@ -23,11 +23,11 @@ public class ProjectileCollision : MonoBehaviour {
             motor.DieAlly();
         }
 
-        else if (collObj.tag == "NPC")
+       /* else if (collObj.tag == "NPC")
         {
             MoveMotor motor = collObj.GetComponent<MoveMotor>();
             motor.DieNPC();
-        }
+        }*/
 
         else if (collObj.tag == "Player")
         {
@@ -35,6 +35,8 @@ public class ProjectileCollision : MonoBehaviour {
             //Vector3 dirToPlayer = (transform.position - collObj.transform.position).normalized;
             Vector3 dirToPlayer = -transform.right;
             collObj.GetComponent<Rigidbody2D>().AddForce(dirToPlayer * -playerPushBackStrength);
+            Debug.Log("OUCH!");
+            Debug.Break();
         }
 
         Debug.Log("projectile hit: " + collObj.name);

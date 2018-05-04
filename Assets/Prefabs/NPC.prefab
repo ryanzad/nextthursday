@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114980765044705950}
   - component: {fileID: 50835575474291420}
   - component: {fileID: 61114613021755624}
+  - component: {fileID: 114574779848800260}
   m_Layer: 8
   m_Name: NPC
   m_TagString: NPC
@@ -247,6 +248,28 @@ MonoBehaviour:
   motor: {fileID: 114980765044705950}
   render: {fileID: 23050327334107092}
   debug: 0
+--- !u!114 &114574779848800260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179262694402010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657acbe7cc7fdfd449a8427ef3d6dbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motor: {fileID: 114980765044705950}
+  formation: 0
+  allowFollowCursor: 1
+  allowLine: 1
+  isLineHead: 0
+  lineRefresh: 0
+  lineRefreshInterval: 1
+  lineUnblockAngle: 40
+  lineUnblockDistance: 6
+  lineUnblockForce: 200
+  debug: 0
 --- !u!114 &114980765044705950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,12 +283,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   master: {fileID: 0}
   rigid: {fileID: 50835575474291420}
-  forwardInitSpeed: 1
-  mouseDistanceSpeed: 100
-  mouseDistanceThreshold: 1
-  mouseDistanceThresholdDamping: 0.948
+  targetHandler: {fileID: 114574779848800260}
+  forwardInitSpeed: 0.7
+  targetDistanceSpeed: 100
+  targetDistanceThreshold: 1
+  targetDistanceThresholdDamping: 0.99
   turnSpeedRange: {x: 7, y: 15}
   turnOnDelay: 0.5
+  turnSpeed: 0
   active: 0
   allowDeath: 1
   explodeRadius: 2

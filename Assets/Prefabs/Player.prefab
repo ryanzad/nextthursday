@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114459199756412568}
   - component: {fileID: 50036670647506426}
   - component: {fileID: 61536312265016812}
+  - component: {fileID: 114896637458987740}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -244,12 +245,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   master: {fileID: 0}
   rigid: {fileID: 50036670647506426}
-  forwardInitSpeed: 9
-  mouseDistanceSpeed: 10
-  mouseDistanceThreshold: 1
-  mouseDistanceThresholdDamping: 0.99
+  targetHandler: {fileID: 114896637458987740}
+  forwardInitSpeed: 0.8
+  targetDistanceSpeed: 100
+  targetDistanceThreshold: 1
+  targetDistanceThresholdDamping: 0.99
   turnSpeedRange: {x: 5, y: 5}
   turnOnDelay: 0.5
+  turnSpeed: 0
   active: 0
   allowDeath: 0
   explodeRadius: 2
+--- !u!114 &114896637458987740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748392166805208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657acbe7cc7fdfd449a8427ef3d6dbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motor: {fileID: 114459199756412568}
+  formation: 0
+  allowFollowCursor: 1
+  allowLine: 1
+  isLineHead: 1
+  lineRefresh: 1
+  lineRefreshInterval: 1
+  lineUnblockAngle: 40
+  lineUnblockDistance: 6
+  lineUnblockForce: 200
+  debug: 0
