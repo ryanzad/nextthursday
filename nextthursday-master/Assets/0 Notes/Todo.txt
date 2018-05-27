@@ -1,0 +1,2 @@
+- When collect ally '+1' point
+- When ally dies, '-1' point

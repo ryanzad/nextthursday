@@ -1,0 +1,24 @@
+
+	//////////////////
+	// PLAYER PREFS //
+	//////////////////
+		
+	/*
+		This is used to
+		keep track of all
+		the Player Prefs in
+		the game.
+	*/
+	
+	
+PREF TITLE --- DATA TYPE --- EXAMPLE VALUES --- DESCRIPTION
+
+LevelLoad --- Int --- Null/0, 1, 2, 3, 4 --- The Level to load
+ModList --- String --- 1,3,5 / 14,10 / 2 --- A list of the num values of the mods stored deliminated by ','
+Allies --- Int --- Null/0, 1, 2 ... --- Number of allies the player starts the level off with
+GameEndState --- String --- DEATH, WIN --- Whether the player has completed or lost the game
+GameScore --- Int --- Null/0, 1, 2 ... --- The current score of the game
+HighScore --- Int --- Null/0, 1, 2 ... --- The high score of the game
+Controls --- String --- MOUSE, X360 --- The controls to support
+TutorialText_Tutorial, TutorialText_Level1 .. --- Int --- Null/0, 1 --- Keep track of whether to display the tutorial text
+RunTutorial --- Int --- Null/0 --- Whether to skip the tutorial
